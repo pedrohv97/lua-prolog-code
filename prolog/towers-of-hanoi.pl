@@ -1,5 +1,5 @@
 /** Towers of Hanoi **/
-
+/** Example code for reference **/
 
 move(1,X,Y,_) :-
     write('Move top disk from '),
