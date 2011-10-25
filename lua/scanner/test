@@ -1,0 +1,5 @@
+test
+
+/** This is a test file  */
+
+P :- Q1,Q2
