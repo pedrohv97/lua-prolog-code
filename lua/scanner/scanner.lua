@@ -9,24 +9,27 @@ Scanner =  {}
 function Scanner.new()
     local self = {}
     local chars = {}
-    local index = 1;
-    local file = ""    
+    local index = 1;   
     
     --[[ 
         Opens a (text) file and builds a table of all the 
         characters contained in the file.
+        Does not store any whitespaces.
     --]]
     function self:loadfile(filename)
-        file = io.open(filename)
+        local file = io.open(filename)
         for line in file:lines() do
             for char in line:gmatch"." do
-                table.insert(chars,char)
+                if not char:match"%s" then
+                    table.insert(chars,char)
+                end
              end
         end
     end
  
     --[[
-        Returns the next character in the table of characters
+        Returns the next character in the table of characters.
+        Must remove spaces.
     --]]
     function self:nextchar()
         local char = chars[index]
@@ -42,6 +45,6 @@ function Scanner.new()
             print(k .. " " .. v)
         end
     end
-    
+
     return self
 end
